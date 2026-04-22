@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- SEO -->
+    <title>Leo Bikes | Oficina de Bicicletas e Loja Premium em Campo Bom - RS</title>
+    <meta name="description" content="Leo Bikes — Oficina especializada em MTB e Speed, venda de bicicletas premium e acessórios em Campo Bom, RS. Av. dos Municípios, 3955. (51) 99985-7570">
+    <meta name="keywords" content="oficina de bicicleta Campo Bom, loja de ciclismo Campo Bom, MTB Campo Bom RS, speed bicicleta RS, bicicletas premium, revisão de bike, Leo Bikes">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="Leo Bikes">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Leo Bikes | Oficina e Loja de Bicicletas Premium">
+    <meta property="og:description" content="Oficina especializada em MTB e Speed, venda de bicicletas premium. Atendimento técnico de quem compete. Porto Alegre, RS.">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="pt_BR">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <!-- Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand:      '#E8551C',
+                        'brand-d':  '#C44415',
+                        ink:        '#0D0D0D',
+                        'ink-2':    '#131313',
+                        'ink-3':    '#1C1C1C',
+                        'ink-4':    '#252525',
+                    },
+                    fontFamily: { sans: ['Inter', 'sans-serif'] }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        html { scroll-behavior: smooth; }
+
+        /* ---- Header transition ---- */
+        #site-header {
+            transition: background 0.35s ease, padding 0.35s ease, box-shadow 0.35s ease;
+        }
+        #site-header.scrolled {
+            background: rgba(13,13,13,0.96);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            box-shadow: 0 1px 0 rgba(255,255,255,0.06);
+            padding-top: 12px;
+            padding-bottom: 12px;
+        }
+
+        /* ---- Hero slider ---- */
+        .hero-slide {
+            position: absolute; inset: 0;
+            transition: opacity 1.1s ease;
+        }
+
+        /* ---- WhatsApp pulse ---- */
+        @keyframes wapulse {
+            0%   { transform: scale(1);   opacity: .7; }
+            100% { transform: scale(1.7); opacity: 0;  }
+        }
+        .wa-btn::before {
+            content: '';
+            position: absolute; inset: 0;
+            border-radius: 9999px;
+            background: #25D366;
+            animation: wapulse 2.4s ease-out infinite;
+            z-index: -1;
+        }
+
+        /* ---- Cards hover ---- */
+        .lift { transition: transform 0.3s ease, border-color 0.3s ease; }
+        .lift:hover { transform: translateY(-5px); border-color: rgba(232,85,28,.35); }
+
+        /* ---- Gallery hover ---- */
+        .gal-wrap { overflow: hidden; border-radius: 1rem; }
+        .gal-wrap img { transition: transform 0.45s ease; }
+        .gal-wrap:hover img { transform: scale(1.06); }
+
+        /* ---- Scroll reveal ---- */
+        .sr { opacity: 0; transform: translateY(28px); transition: opacity .7s ease, transform .7s ease; }
+        .sr.in { opacity: 1; transform: translateY(0); }
+
+        /* ---- CRITICAL FIX: Focus states (WCAG 2.1 AA) ---- */
+        :focus-visible {
+            outline: 2px solid #E8551C;
+            outline-offset: 3px;
+            border-radius: 4px;
+        }
+
+        /* ---- CRITICAL FIX: Contraste — elevar opacity do corpo de texto ---- */
+        /* white/50 (~3:1) e white/55 (~3.3:1) substituídos por white/75 (~5.5:1) nas classes de body text */
+        .body-text  { color: rgba(255,255,255,0.75); }
+        .muted-text { color: rgba(255,255,255,0.65); }
+
+        /* ---- Slider pause on hover ---- */
+        .slider-paused { /* controlled via JS */ }
+    </style>
+</head>
+
+<body class="bg-ink text-white font-sans antialiased">
+
+    <!-- =============================================
+         FLOATING WHATSAPP
+    ============================================== -->
+    <a href="https://wa.me/5551999857570?text=Ol%C3%A1%20Leo%2C%20vim%20pelo%20site%20e%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es!"
+       target="_blank" rel="noopener"
+       class="wa-btn fixed bottom-6 right-5 z-50 relative flex items-center justify-center w-14 h-14 rounded-full
+              bg-[#25D366] hover:bg-[#1fba5a] text-white shadow-xl transition-colors"
+       aria-label="WhatsApp Leo Bikes">
+        <i class="fa-brands fa-whatsapp text-2xl"></i>
+    </a>
+
+    <!-- =============================================
+         HEADER
+    ============================================== -->
+    <header id="site-header" class="fixed top-0 inset-x-0 z-40 py-5 px-4">
+        <div class="max-w-7xl mx-auto flex items-center justify-between">
+
+            <a href="#" aria-label="Leo Bikes">
+                <img src="Logotipo/Logotipo%20Leo%20Bikes-02.png"
+                     alt="Leo Bikes" class="h-9 w-auto object-contain">
+            </a>
+
+            <!-- Desktop nav -->
+            <nav class="hidden md:flex items-center gap-7">
+                <a href="#servicos" class="text-sm font-semibold text-white/70 hover:text-white transition-colors">Serviços</a>
+                <a href="#galeria"  class="text-sm font-semibold text-white/70 hover:text-white transition-colors">Galeria</a>
+                <a href="#sobre"    class="text-sm font-semibold text-white/70 hover:text-white transition-colors">Sobre</a>
+                <a href="#contato"  class="text-sm font-semibold text-white/70 hover:text-white transition-colors">Contato</a>
+                <a href="https://wa.me/5551999857570?text=Quero%20agendar%20uma%20revis%C3%A3o!"
+                   target="_blank" rel="noopener"
+                   class="bg-brand hover:bg-brand-d text-white text-sm font-bold px-5 py-2.5 rounded-lg transition-colors shadow-md shadow-brand/20">
+                    Agendar Revisão
+                </a>
+            </nav>
+
+            <!-- Hamburger -->
+            <button id="ham-btn" class="md:hidden text-white p-2" aria-label="Menu">
+                <i class="fa-solid fa-bars text-xl"></i>
+            </button>
+        </div>
+
+        <!-- Mobile menu -->
+        <div id="mob-menu" class="hidden md:hidden">
+            <nav class="mt-3 flex flex-col gap-1 bg-ink-3 border border-white/10 rounded-xl p-4">
+                <a href="#servicos" class="mob-link text-sm font-semibold text-white/70 hover:text-brand py-2.5 px-3 rounded-lg hover:bg-white/5 transition-colors">Serviços</a>
+                <a href="#galeria"  class="mob-link text-sm font-semibold text-white/70 hover:text-brand py-2.5 px-3 rounded-lg hover:bg-white/5 transition-colors">Galeria</a>
+                <a href="#sobre"    class="mob-link text-sm font-semibold text-white/70 hover:text-brand py-2.5 px-3 rounded-lg hover:bg-white/5 transition-colors">Sobre</a>
+                <a href="#contato"  class="mob-link text-sm font-semibold text-white/70 hover:text-brand py-2.5 px-3 rounded-lg hover:bg-white/5 transition-colors">Contato</a>
+                <a href="https://wa.me/5551999857570?text=Quero%20agendar%20uma%20revis%C3%A3o!"
+                   target="_blank" rel="noopener"
+                   class="mob-link mt-1 bg-brand text-white text-sm font-bold py-3 px-3 rounded-lg text-center transition-colors">
+                    Agendar Revisão
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- =============================================
+         HERO SLIDER
+    ============================================== -->
+    <section class="relative h-screen min-h-[600px] overflow-hidden">
+
+        <!-- Slides -->
+        <div class="absolute inset-0 z-0">
+            <div id="s0" class="hero-slide" style="opacity:1">
+                <img src="assets/hero-1708.jpg"
+                     alt="Ciclistas em estrada de montanha" class="w-full h-full object-cover"
+                     fetchpriority="high">
+            </div>
+            <div id="s1" class="hero-slide" style="opacity:0">
+                <img src="assets/hero-1191.jpg"
+                     alt="MTB em voo sobre montanha" class="w-full h-full object-cover object-center"
+                     loading="lazy">
+            </div>
+            <div id="s2" class="hero-slide" style="opacity:0">
+                <img src="assets/hero-1762.jpg"
+                     alt="Ciclistas em estrada arborizada" class="w-full h-full object-cover"
+                     loading="lazy">
+            </div>
+        </div>
+
+        <!-- Overlays: uniforme primeiro, depois direcional para reforçar lado do texto -->
+        <div class="absolute inset-0 z-10" style="background: rgba(0,0,0,0.55)"></div>
+        <div class="absolute inset-0 z-10" style="background: linear-gradient(to right, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.20) 60%, rgba(0,0,0,0) 100%)"></div>
+        <div class="absolute inset-0 z-10" style="background: linear-gradient(to top, #0D0D0D 0%, rgba(13,13,13,0.3) 30%, transparent 60%)"></div>
+
+        <!-- Content -->
+        <div class="relative z-20 h-full flex items-center">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 w-full pt-24">
+                <div class="max-w-xl lg:max-w-2xl">
+
+                    <span class="inline-flex items-center gap-2 text-brand text-xs font-bold tracking-[0.2em] uppercase mb-5">
+                        <span class="w-8 h-px bg-brand inline-block"></span>
+                        Oficina &amp; Loja Especializada · Campo Bom, RS
+                    </span>
+
+                    <h1 class="text-4xl sm:text-5xl lg:text-[3.6rem] font-black leading-[1.08] tracking-tight mb-6">
+                        A performance que<br>você busca, com a<br>
+                        <span class="text-brand">confiança de quem<br>compete.</span>
+                    </h1>
+
+                    <p class="text-base sm:text-lg text-white/80 mb-9 max-w-md leading-relaxed">
+                        Oficina especializada em MTB e Speed, venda de bicicletas e acessórios.
+                        Leve seu pedal para o próximo nível.
+                    </p>
+
+                    <div class="flex flex-col sm:flex-row gap-3">
+                        <a href="https://wa.me/5551999857570?text=Ol%C3%A1%20Leo%2C%20vim%20pelo%20site!"
+                           target="_blank" rel="noopener"
+                           class="flex items-center justify-center gap-3 bg-brand hover:bg-brand-d text-white font-bold
+                                  px-7 py-4 rounded-xl text-base transition-all duration-200 hover:-translate-y-0.5
+                                  shadow-xl shadow-brand/25">
+                            <i class="fa-brands fa-whatsapp text-xl"></i>
+                            Falar com o Leo no WhatsApp
+                        </a>
+                        <a href="#servicos"
+                           class="flex items-center justify-center gap-2 border border-white/25 hover:border-white/55
+                                  text-white font-semibold px-7 py-4 rounded-xl text-base transition-all hover:bg-white/8">
+                            Ver Serviços
+                            <i class="fa-solid fa-arrow-down text-xs"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide dots -->
+        <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex gap-2 items-center">
+            <button class="dot rounded-full bg-brand transition-all duration-500" style="width:28px;height:4px" data-n="0"></button>
+            <button class="dot rounded-full bg-white/35 transition-all duration-500" style="width:8px;height:4px"  data-n="1"></button>
+            <button class="dot rounded-full bg-white/35 transition-all duration-500" style="width:8px;height:4px"  data-n="2"></button>
+        </div>
+    </section>
+
+    <!-- =============================================
+         STATS BAR
+    ============================================== -->
+    <section class="bg-brand py-7 sr">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-5 text-center">
+                <div>
+                    <p class="text-3xl font-black text-white">2021</p>
+                    <p class="text-xs text-white/80 font-semibold mt-1 uppercase tracking-wider">Fundada em Porto Alegre</p>
+                </div>
+                <div>
+                    <p class="text-3xl font-black text-white">500+</p>
+                    <p class="text-xs text-white/80 font-semibold mt-1 uppercase tracking-wider">Bikes revisadas/ano</p>
+                </div>
+                <div>
+                    <p class="text-2xl font-black text-white">MTB & Speed</p>
+                    <p class="text-xs text-white/80 font-semibold mt-1 uppercase tracking-wider">Especialidades</p>
+                </div>
+                <div>
+                    <p class="text-3xl font-black text-white">100%</p>
+                    <p class="text-xs text-white/80 font-semibold mt-1 uppercase tracking-wider">Foco no atleta</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- =============================================
+         DIFERENCIAIS
+    ============================================== -->
+    <section class="py-24 bg-ink" id="diferenciais">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
+
+            <div class="text-center mb-14 sr">
+                <span class="text-brand text-xs font-bold tracking-[.18em] uppercase">Por que a Leo Bikes</span>
+                <h2 class="text-3xl sm:text-4xl font-black mt-3 tracking-tight leading-tight">
+                    Mais que uma loja.<br>
+                    <span class="text-brand">Uma parceria de performance.</span>
+                </h2>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-5">
+
+                <div class="lift bg-ink-3 border border-white/6 rounded-2xl p-8 sr">
+                    <div class="w-14 h-14 bg-brand/12 rounded-xl flex items-center justify-center mb-6">
+                        <i class="fa-solid fa-wrench text-brand text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Oficina Especializada</h3>
+                    <p class="text-white/75 leading-relaxed text-sm">
+                        Sua bike sai calibrada para render o máximo — câmbio, freios e transmissão
+                        ajustados por quem compete e sabe o que diferencia segundos no cronômetro.
+                    </p>
+                </div>
+
+                <div class="lift bg-ink-3 border border-white/6 rounded-2xl p-8 sr" style="transition-delay:.1s">
+                    <div class="w-14 h-14 bg-brand/12 rounded-xl flex items-center justify-center mb-6">
+                        <i class="fa-solid fa-trophy text-brand text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Bicicletas para Todos os Níveis</h3>
+                    <p class="text-white/75 leading-relaxed text-sm">
+                        Do primeiro pedal à alta competição. Curadoria honesta de bikes para urbano,
+                        MTB e Speed — sempre com foco em performance real, não em marketing.
+                    </p>
+                </div>
+
+                <div class="lift bg-ink-3 border border-white/6 rounded-2xl p-8 sr" style="transition-delay:.2s">
+                    <div class="w-14 h-14 bg-brand/12 rounded-xl flex items-center justify-center mb-6">
+                        <i class="fa-solid fa-medal text-brand text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Atendimento de Atleta</h3>
+                    <p class="text-white/75 leading-relaxed text-sm">
+                        Sem papo de vendedor. Leo usa o que vende, compete no que revisa
+                        e indica só o que realmente vai fazer diferença na sua performance.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- =============================================
+         SERVIÇOS
+    ============================================== -->
+    <section class="py-24 bg-ink-2" id="servicos">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
+
+            <div class="text-center mb-14 sr">
+                <span class="text-brand text-xs font-bold tracking-[.18em] uppercase">O que oferecemos</span>
+                <h2 class="text-3xl sm:text-4xl font-black mt-3 tracking-tight">
+                    Nossos <span class="text-brand">Serviços</span>
+                </h2>
+                <p class="text-white/50 mt-3 max-w-md mx-auto text-sm">
+                    Do básico ao especializado, cuidamos da sua bike como se fosse a nossa.
+                </p>
+            </div>
+
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+
+                <!-- 1 -->
+                <div class="lift bg-ink-3 border border-white/6 rounded-2xl p-6 flex flex-col sr">
+                    <div class="w-12 h-12 bg-brand rounded-xl flex items-center justify-center mb-5 shrink-0">
+                        <i class="fa-solid fa-gear text-white text-lg"></i>
+                    </div>
+                    <h3 class="font-bold text-base mb-2">Manutenção e Revisão Geral</h3>
+                    <p class="text-white/75 text-sm leading-relaxed flex-1">
+                        Sua bike volta rodando como no primeiro dia — câmbio preciso, freios seguros,
+                        transmissão silenciosa. Diagnóstico gratuito na entrega.
+                    </p>
+                    <a href="https://wa.me/5551999857570?text=Quero%20agendar%20uma%20revis%C3%A3o%20geral!"
+                       target="_blank" rel="noopener"
+                       class="mt-5 inline-flex items-center gap-1.5 text-brand text-sm font-semibold group">
+                        Agendar
+                        <i class="fa-solid fa-arrow-right text-xs transition-transform group-hover:translate-x-1"></i>
+                    </a>
+                </div>
+
+                <!-- 2 -->
+                <div class="lift bg-ink-3 border border-white/6 rounded-2xl p-6 flex flex-col sr" style="transition-delay:.1s">
+                    <div class="w-12 h-12 bg-brand rounded-xl flex items-center justify-center mb-5 shrink-0">
+                        <i class="fa-solid fa-droplet text-white text-lg"></i>
+                    </div>
+                    <h3 class="font-bold text-base mb-2">Lavagem Detalhada</h3>
+                    <p class="text-white/75 text-sm leading-relaxed flex-1">
+                        Prolongue a vida útil dos componentes e elimine desgaste prematuro.
+                        Sua bike sai impecável, lubrificada e pronta para a próxima trilha.
+                    </p>
+                    <a href="https://wa.me/5551999857570?text=Quero%20agendar%20uma%20lavagem%20da%20bike!"
+                       target="_blank" rel="noopener"
+                       class="mt-5 inline-flex items-center gap-1.5 text-brand text-sm font-semibold group">
+                        Agendar
+                        <i class="fa-solid fa-arrow-right text-xs transition-transform group-hover:translate-x-1"></i>
+                    </a>
+                </div>
+
+                <!-- 3 -->
+                <div class="lift bg-ink-3 border border-white/6 rounded-2xl p-6 flex flex-col sr" style="transition-delay:.2s">
+                    <div class="w-12 h-12 bg-brand rounded-xl flex items-center justify-center mb-5 shrink-0">
+                        <i class="fa-solid fa-box-open text-white text-lg"></i>
+                    </div>
+                    <h3 class="font-bold text-base mb-2">Peças e Acessórios</h3>
+                    <p class="text-white/75 text-sm leading-relaxed flex-1">
+                        Peças certas para cada bike, sem empurrar o que não serve. Você economiza
+                        tempo e dinheiro com indicação de quem entende do assunto.
+                    </p>
+                    <a href="https://wa.me/5551999857570?text=Quero%20saber%20sobre%20pe%C3%A7as%20e%20acess%C3%B3rios!"
+                       target="_blank" rel="noopener"
+                       class="mt-5 inline-flex items-center gap-1.5 text-brand text-sm font-semibold group">
+                        Consultar
+                        <i class="fa-solid fa-arrow-right text-xs transition-transform group-hover:translate-x-1"></i>
+                    </a>
+                </div>
+
+                <!-- 4 -->
+                <div class="lift bg-ink-3 border border-white/6 rounded-2xl p-6 flex flex-col sr" style="transition-delay:.3s">
+                    <div class="w-12 h-12 bg-brand rounded-xl flex items-center justify-center mb-5 shrink-0">
+                        <i class="fa-solid fa-star text-white text-lg"></i>
+                    </div>
+                    <h3 class="font-bold text-base mb-2">Consultoria de Compra</h3>
+                    <p class="text-white/75 text-sm leading-relaxed flex-1">
+                        Não compre a bike errada. O Leo te ajuda a escolher o equipamento certo
+                        para seu estilo de pedal — sem pressão, sem comissão escondida.
+                    </p>
+                    <a href="https://wa.me/5551999857570?text=Quero%20consultoria%20para%20comprar%20uma%20bike!"
+                       target="_blank" rel="noopener"
+                       class="mt-5 inline-flex items-center gap-1.5 text-brand text-sm font-semibold group">
+                        Falar com o Leo
+                        <i class="fa-solid fa-arrow-right text-xs transition-transform group-hover:translate-x-1"></i>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- =============================================
+         GALERIA
+    ============================================== -->
+    <section class="py-24 bg-ink" id="galeria">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
+
+            <div class="text-center mb-12 sr">
+                <span class="text-brand text-xs font-bold tracking-[.18em] uppercase">Performance em imagem</span>
+                <h2 class="text-3xl sm:text-4xl font-black mt-3 tracking-tight">
+                    Viva o <span class="text-brand">Ciclismo</span>
+                </h2>
+            </div>
+
+            <!-- Grid: 3 cols, last col spans 2 rows on md+ (collapses gracefully on mobile) -->
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-3 auto-rows-[220px] md:auto-rows-[280px]">
+
+                <div class="gal-wrap sr">
+                    <img src="assets/cta-bg.jpg"
+                         alt="MTB em trilha de floresta" class="w-full h-full object-cover" loading="lazy">
+                </div>
+
+                <div class="gal-wrap sr" style="transition-delay:.1s">
+                    <img src="assets/gal-1371.jpg"
+                         alt="Gravel em trilha" class="w-full h-full object-cover" loading="lazy">
+                </div>
+
+                <!-- Tall card, spans 2 rows -->
+                <div class="gal-wrap row-span-2 sr" style="transition-delay:.2s">
+                    <img src="assets/hero-1191.jpg"
+                         alt="MTB salto em montanha" class="w-full h-full object-cover" loading="lazy">
+                </div>
+
+                <div class="gal-wrap sr" style="transition-delay:.3s">
+                    <img src="assets/gal-2757.jpg"
+                         alt="MTB no pico com pôr do sol" class="w-full h-full object-cover" loading="lazy">
+                </div>
+
+                <div class="gal-wrap sr" style="transition-delay:.4s">
+                    <img src="assets/gal-1715.jpg"
+                         alt="MTB manobra radical" class="w-full h-full object-cover" loading="lazy">
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- =============================================
+         SOBRE / AUTORIDADE
+    ============================================== -->
+    <section class="py-24 bg-ink-2" id="sobre">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
+            <div class="grid lg:grid-cols-2 gap-14 items-center">
+
+                <!-- Foto -->
+                <div class="sr">
+                    <div class="relative max-w-lg mx-auto lg:mx-0">
+                        <div class="aspect-[4/5] rounded-2xl overflow-hidden">
+                            <img src="assets/hero-1762.jpg"
+                                 alt="Ciclistas Leo Bikes"
+                                 class="w-full h-full object-cover" loading="lazy">
+                        </div>
+                        <!-- Linha decorativa -->
+                        <div class="absolute -top-4 -left-4 w-24 h-24 border-2 border-brand/30 rounded-xl -z-10"></div>
+                    </div>
+                </div>
+
+                <!-- Texto -->
+                <div class="sr" style="transition-delay:.2s">
+                    <span class="text-brand text-xs font-bold tracking-[.18em] uppercase">Quem é o Leo</span>
+                    <h2 class="text-3xl sm:text-4xl font-black mt-3 mb-6 tracking-tight leading-tight">
+                        Atendimento de atleta<br>
+                        <span class="text-brand">para atletas.</span>
+                    </h2>
+                    <div class="space-y-4 text-white/75 leading-relaxed text-sm">
+                        <p>
+                            Leo não é só dono de uma loja de bikes — é ciclista competitivo.
+                            Sabe o que é precisar de uma bike 100% calibrada antes de uma prova.
+                            Sabe o que é perder segundos por um câmbio mal ajustado.
+                        </p>
+                        <p>
+                            Por isso, cada bike que sai da Leo Bikes passa pelo mesmo nível de exigência
+                            que ele aplica na própria competição. Não importa o estilo de pedal: o padrão
+                            técnico é sempre o mesmo.
+                        </p>
+                        <p>
+                            A Leo Bikes nasceu da paixão pelo ciclismo e da vontade de oferecer o que
+                            o mercado não tinha: atendimento técnico real, feito por quem entende da
+                            modalidade por dentro.
+                        </p>
+                    </div>
+
+                    <div class="mt-7 grid grid-cols-1 gap-y-3">
+                        <div class="flex items-start gap-2 text-sm text-white/75">
+                            <i class="fa-solid fa-circle-check text-brand text-base shrink-0 mt-0.5"></i>
+                            Você recebe indicação honesta — sem empurrar produto, sem comissão escondida
+                        </div>
+                        <div class="flex items-start gap-2 text-sm text-white/75">
+                            <i class="fa-solid fa-circle-check text-brand text-base shrink-0 mt-0.5"></i>
+                            Sua bike é ajustada com padrão de atleta, não de mecânico de bairro
+                        </div>
+                        <div class="flex items-start gap-2 text-sm text-white/75">
+                            <i class="fa-solid fa-circle-check text-brand text-base shrink-0 mt-0.5"></i>
+                            Orçamento sempre sem compromisso — você decide, sem pressão
+                        </div>
+                        <div class="flex items-start gap-2 text-sm text-white/75">
+                            <i class="fa-solid fa-circle-check text-brand text-base shrink-0 mt-0.5"></i>
+                            Atendimento direto com o Leo, sem intermediário ou atendente de balcão
+                        </div>
+                    </div>
+
+                    <div class="mt-9">
+                        <a href="https://wa.me/5551999857570?text=Ol%C3%A1%20Leo%2C%20quero%20conversar%20sobre%20minha%20bike!"
+                           target="_blank" rel="noopener"
+                           class="inline-flex items-center gap-3 bg-brand hover:bg-brand-d text-white font-bold
+                                  px-7 py-4 rounded-xl transition-all duration-200 hover:-translate-y-0.5 shadow-lg shadow-brand/20">
+                            <i class="fa-brands fa-whatsapp text-xl"></i>
+                            Falar com o Leo
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- =============================================
+         CTA FINAL (parallax bg)
+    ============================================== -->
+    <section class="relative py-28 overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <img src="assets/cta-bg.jpg"
+                 alt="" class="w-full h-full object-cover scale-110"
+                 style="transform-origin: center" loading="lazy">
+        </div>
+        <div class="absolute inset-0 z-10" style="background: rgba(0,0,0,0.88)"></div>
+        <div class="absolute inset-0 z-10" style="background: rgba(232,85,28,0.08)"></div>
+
+        <div class="relative z-20 max-w-2xl mx-auto px-4 text-center sr">
+            <span class="text-brand text-xs font-bold tracking-[.18em] uppercase">
+                Pronto para o próximo nível?
+            </span>
+            <h2 class="text-4xl sm:text-5xl font-black mt-4 mb-5 tracking-tight leading-tight">
+                Sua bike merece o<br>
+                <span class="text-brand">melhor atendimento.</span>
+            </h2>
+            <p class="text-white/75 text-base mb-3 leading-relaxed">
+                Agende sua revisão ou tire suas dúvidas diretamente com o Leo.
+                Resposta rápida, atendimento de atleta.
+            </p>
+            <p class="text-white/50 text-sm mb-10">
+                Orçamento 100% gratuito e sem compromisso. Você decide.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="https://wa.me/5551999857570?text=Ol%C3%A1%20Leo%2C%20quero%20agendar%20uma%20revis%C3%A3o!"
+                   target="_blank" rel="noopener"
+                   class="flex items-center justify-center gap-3 bg-[#25D366] hover:bg-[#1fba5a] text-white
+                          font-bold px-8 py-4 rounded-xl text-lg transition-all duration-200 hover:-translate-y-0.5 shadow-xl">
+                    <i class="fa-brands fa-whatsapp text-2xl"></i>
+                    Falar no WhatsApp
+                </a>
+                <a href="tel:+5551999857570"
+                   class="flex items-center justify-center gap-3 border-2 border-white/30 hover:border-white/70
+                          text-white font-bold px-8 py-4 rounded-xl text-lg transition-all hover:bg-white/8">
+                    <i class="fa-solid fa-phone text-xl"></i>
+                    (51) 99985-7570
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- =============================================
+         FOOTER
+    ============================================== -->
+    <footer id="contato" class="bg-[#080808] border-t border-white/8 pt-14 pb-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
+
+            <div class="grid md:grid-cols-3 gap-10 mb-12">
+
+                <!-- Brand -->
+                <div>
+                    <img src="Logotipo/Logotipo%20Leo%20Bikes-01.png"
+                         alt="Leo Bikes" class="h-10 w-auto object-contain mb-4">
+                    <p class="text-white/65 text-sm leading-relaxed max-w-xs">
+                        Oficina especializada em MTB e Speed. Bicicletas e acessórios com
+                        atendimento técnico de quem compete.
+                    </p>
+                    <div class="flex gap-3 mt-5">
+                        <a href="https://wa.me/5551999857570" target="_blank" rel="noopener"
+                           class="w-9 h-9 rounded-lg bg-white/6 hover:bg-brand flex items-center justify-center
+                                  text-white/50 hover:text-white transition-all"
+                           aria-label="WhatsApp">
+                            <i class="fa-brands fa-whatsapp text-sm"></i>
+                        </a>
+                        <a href="https://www.instagram.com/leo_bikeshop/" target="_blank" rel="noopener"
+                           class="w-9 h-9 rounded-lg bg-white/6 hover:bg-brand flex items-center justify-center
+                                  text-white/50 hover:text-white transition-all"
+                           aria-label="Instagram Leo Bikes">
+                            <i class="fa-brands fa-instagram text-sm"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Navegação -->
+                <div>
+                    <h4 class="font-bold text-xs tracking-[.15em] uppercase text-white/60 mb-4">Navegação</h4>
+                    <ul class="space-y-2 text-sm text-white/65">
+                        <li><a href="#diferenciais" class="hover:text-brand transition-colors">Por que a Leo Bikes</a></li>
+                        <li><a href="#servicos"     class="hover:text-brand transition-colors">Serviços</a></li>
+                        <li><a href="#galeria"      class="hover:text-brand transition-colors">Galeria</a></li>
+                        <li><a href="#sobre"        class="hover:text-brand transition-colors">Sobre o Leo</a></li>
+                        <li>
+                            <a href="https://wa.me/5551999857570?text=Quero%20agendar%20uma%20revis%C3%A3o!"
+                               target="_blank" rel="noopener"
+                               class="hover:text-brand transition-colors">Agendar Revisão</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Contato -->
+                <div>
+                    <h4 class="font-bold text-xs tracking-[.15em] uppercase text-white/60 mb-4">Contato</h4>
+                    <ul class="space-y-3 text-sm text-white/65">
+                        <li class="flex items-start gap-3">
+                            <i class="fa-brands fa-whatsapp text-brand mt-0.5 w-4 shrink-0"></i>
+                            <a href="https://wa.me/5551999857570" target="_blank" rel="noopener"
+                               class="hover:text-brand transition-colors">(51) 99985-7570</a>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-phone text-brand mt-0.5 w-4 shrink-0"></i>
+                            <a href="tel:+5551999857570" class="hover:text-brand transition-colors">
+                                (51) 99985-7570
+                            </a>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-clock text-brand mt-0.5 w-4 shrink-0"></i>
+                            <div class="space-y-0.5">
+                                <p>Seg – Sex: 08:00–12:00 / 13:30–18:30</p>
+                                <p>Sábado: 08:00–12:00</p>
+                                <p class="text-white/40">Domingo: Fechado</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-location-dot text-brand mt-0.5 w-4 shrink-0"></i>
+                            <div class="space-y-0.5">
+                                <a href="https://share.google/0KsvZn6BKRgSCGDD6"
+                                   target="_blank" rel="noopener"
+                                   class="hover:text-brand transition-colors">
+                                    <p>Av. dos Municípios, 3955 — Sala 4</p>
+                                    <p>Bairro Vinte e Cinco de Julho</p>
+                                    <p>Campo Bom — RS, 93701-000</p>
+                                </a>
+                                <a href="https://share.google/0KsvZn6BKRgSCGDD6"
+                                   target="_blank" rel="noopener"
+                                   class="inline-flex items-center gap-1.5 mt-2 text-brand text-xs font-semibold
+                                          border border-brand/40 hover:border-brand hover:bg-brand/10
+                                          px-3 py-1.5 rounded-lg transition-all">
+                                    <i class="fa-solid fa-route text-xs"></i>
+                                    Como Chegar
+                                </a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <div class="border-t border-white/8 pt-7 flex flex-col sm:flex-row justify-between items-center gap-3">
+                <p class="text-white/25 text-xs">© 2026 Leo Bikes. Todos os direitos reservados.</p>
+                <p class="text-white/25 text-xs">Oficina Especializada em Bicicletas · Campo Bom, RS</p>
+            </div>
+
+        </div>
+    </footer>
+
+    <!-- =============================================
+         SCRIPTS
+    ============================================== -->
+    <script>
+    // ---- Header on scroll ----
+    const hdr = document.getElementById('site-header');
+    window.addEventListener('scroll', () => {
+        hdr.classList.toggle('scrolled', window.scrollY > 60);
+    }, { passive: true });
+
+    // ---- Mobile menu ----
+    const hamBtn = document.getElementById('ham-btn');
+    const mobMenu = document.getElementById('mob-menu');
+    const icon = hamBtn.querySelector('i');
+    hamBtn.addEventListener('click', () => {
+        const open = !mobMenu.classList.contains('hidden');
+        mobMenu.classList.toggle('hidden', open);
+        icon.className = open ? 'fa-solid fa-bars text-xl' : 'fa-solid fa-xmark text-xl';
+        if (open) hamBtn.focus(); // retorna foco ao botão ao fechar
+    });
+    mobMenu.querySelectorAll('.mob-link').forEach(a => {
+        a.addEventListener('click', () => {
+            mobMenu.classList.add('hidden');
+            icon.className = 'fa-solid fa-bars text-xl';
+        });
+    });
+
+    // ---- Hero slider ----
+    const slides = [
+        document.getElementById('s0'),
+        document.getElementById('s1'),
+        document.getElementById('s2'),
+    ];
+    const dots = document.querySelectorAll('.dot');
+    let cur = 0;
+
+    function gotoSlide(n) {
+        // hide current
+        slides[cur].style.opacity = '0';
+        dots[cur].style.width = '8px';
+        dots[cur].style.backgroundColor = 'rgba(255,255,255,0.35)';
+        // show next
+        cur = n;
+        slides[cur].style.opacity = '1';
+        dots[cur].style.width = '28px';
+        dots[cur].style.backgroundColor = '#E8551C';
+    }
+
+    dots.forEach((d, i) => d.addEventListener('click', () => gotoSlide(i)));
+
+    // Auto-advance com pausa ao interagir
+    let paused = false;
+    const heroSection = document.querySelector('section');
+    heroSection.addEventListener('mouseenter', () => paused = true);
+    heroSection.addEventListener('mouseleave', () => paused = false);
+    heroSection.addEventListener('touchstart', () => { paused = true; setTimeout(() => paused = false, 4000); }, { passive: true });
+    setInterval(() => { if (!paused) gotoSlide((cur + 1) % slides.length); }, 5000);
+
+    // ---- Scroll reveal ----
+    const obs = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+            if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target); }
+        });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.sr').forEach(el => obs.observe(el));
+    </script>
+</body>
+</html>
