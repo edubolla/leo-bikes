@@ -53,23 +53,23 @@
             width: 100%;
             display: flex;
             flex-direction: column;
-            gap: 14px;
+            gap: 12px;
             margin-bottom: 44px;
         }
 
         .card {
             position: relative;
             width: 100%;
-            height: 110px;
-            border-radius: 18px;
+            height: 80px;
+            border-radius: 16px;
             overflow: hidden;
             text-decoration: none;
             display: block;
             -webkit-tap-highlight-color: transparent;
             transition: transform 0.2s ease, box-shadow 0.2s ease;
-            box-shadow: 0 4px 24px rgba(0,0,0,0.45);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.45);
         }
-        .card:hover  { transform: translateY(-3px); box-shadow: 0 8px 32px rgba(0,0,0,0.55); }
+        .card:hover  { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(0,0,0,0.55); }
         .card:active { transform: scale(0.98); }
 
         /* Background photo */
@@ -82,92 +82,83 @@
             object-position: center;
         }
 
-        /* Dark overlay — stronger on right where text lives */
+        /* Overlay — darker on left where content lives, photo shows on right */
         .card-overlay {
             position: absolute;
             inset: 0;
             background: linear-gradient(
                 to right,
-                rgba(0,0,0,0.15) 0%,
-                rgba(0,0,0,0.60) 38%,
-                rgba(0,0,0,0.88) 100%
+                rgba(0,0,0,0.82) 0%,
+                rgba(0,0,0,0.60) 55%,
+                rgba(0,0,0,0.25) 100%
             );
         }
-        /* Extra tint for overall legibility */
-        .card-overlay::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: rgba(0,0,0,0.22);
-        }
 
-        /* Content */
+        /* Content row: icon | text | arrow */
         .card-content {
             position: relative;
             z-index: 2;
             height: 100%;
             display: flex;
-            flex-direction: column;
-            align-items: flex-end;
+            flex-direction: row;
+            align-items: center;
+            padding: 0 18px;
+            gap: 14px;
+        }
+
+        /* Icon circle — inline, not floating */
+        .card-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
             justify-content: center;
-            padding: 16px 20px 16px 40%;
-            gap: 6px;
+            font-size: 18px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.45);
+        }
+
+        .icon-orange  { background: #E8551C; color: #fff; }
+        .icon-green   { background: #25D366; color: #fff; }
+        .icon-dark    { background: rgba(255,255,255,0.12); color: rgba(255,255,255,0.80); border: 1.5px solid rgba(255,255,255,0.18); }
+
+        /* Text block */
+        .card-text {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
         }
 
         .card-title {
-            font-size: 17px;
+            font-size: 15px;
             font-weight: 800;
             color: #fff;
-            line-height: 1.2;
-            text-align: right;
+            line-height: 1.25;
         }
 
         .card-sub {
             font-size: 11px;
             font-weight: 500;
             color: rgba(255,255,255,0.60);
-            text-align: right;
             line-height: 1.4;
         }
 
-        .card-pill {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            margin-top: 2px;
-            background: rgba(255,255,255,0.12);
-            border: 1px solid rgba(255,255,255,0.22);
-            color: #fff;
-            font-size: 11px;
-            font-weight: 700;
-            padding: 5px 12px;
-            border-radius: 999px;
-            backdrop-filter: blur(4px);
-        }
-
-        /* Floating icon badge */
-        .card-icon {
-            position: absolute;
-            z-index: 3;
-            top: -8px;
-            right: -8px;
-            width: 46px;
-            height: 46px;
+        /* Arrow on far right */
+        .card-arrow {
+            flex-shrink: 0;
+            width: 30px;
+            height: 30px;
             border-radius: 50%;
+            background: rgba(255,255,255,0.10);
+            border: 1px solid rgba(255,255,255,0.18);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 20px;
-            box-shadow: 0 4px 16px rgba(0,0,0,0.5);
-            border: 2px solid rgba(255,255,255,0.15);
+            font-size: 11px;
+            color: rgba(255,255,255,0.70);
         }
-
-        .icon-orange  { background: #E8551C; color: #fff; }
-        .icon-green   { background: #25D366; color: #fff; }
-        .icon-dark    { background: #1C1C1C; color: rgba(255,255,255,0.75); border-color: rgba(255,255,255,0.12); }
-
-        /* Pill accent color per card */
-        .card-primary .card-pill { background: rgba(232,85,28,0.25); border-color: rgba(232,85,28,0.5); }
 
         /* Divider */
         .divider {
@@ -208,6 +199,29 @@
             color: rgba(255,255,255,0.15);
             letter-spacing: 0.04em;
         }
+
+        /* WhatsApp floating button */
+        .wa-btn {
+            position: fixed;
+            bottom: 24px;
+            right: 20px;
+            z-index: 50;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 56px;
+            height: 56px;
+            background: #25D366;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 50%;
+            box-shadow: 0 4px 20px rgba(37,211,102,0.45);
+            transition: transform 0.18s ease, box-shadow 0.18s ease;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .wa-btn:hover  { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(37,211,102,0.55); }
+        .wa-btn:active { transform: scale(0.96); }
+        .wa-btn i { font-size: 26px; }
     </style>
 </head>
 <body>
@@ -219,15 +233,17 @@
     <div class="links">
 
         <!-- Consultoria de Compra -->
-        <a href="https://wa.me/5551999857570?text=Ol%C3%A1%20Leo%2C%20quero%20consultoria%20para%20comprar%20uma%20bike!"
-           target="_blank" rel="noopener" class="card card-primary">
+        <a href="https://wa.me/5551999857570?text=Ol%C3%A1%2C%20preciso%20de%20ajuda%20para%20comprar%20uma%20bicicleta."
+           target="_blank" rel="noopener" class="card">
             <img src="assets/gal-2757.jpg" alt="" class="card-bg" loading="eager">
             <div class="card-overlay"></div>
-            <div class="card-icon icon-green"><i class="fa-brands fa-whatsapp"></i></div>
             <div class="card-content">
-                <p class="card-title">Consultoria<br>de Compra</p>
-                <p class="card-sub">Fale direto com o Leo</p>
-                <span class="card-pill"><i class="fa-solid fa-arrow-right" style="font-size:9px"></i> Falar agora</span>
+                <div class="card-icon icon-green"><i class="fa-brands fa-whatsapp"></i></div>
+                <div class="card-text">
+                    <p class="card-title">Precisa de ajuda para escolher sua bike?</p>
+                    <p class="card-sub">Fale com nossos consultores.</p>
+                </div>
+                <div class="card-arrow"><i class="fa-solid fa-arrow-right"></i></div>
             </div>
         </a>
 
@@ -236,11 +252,13 @@
            target="_blank" rel="noopener" class="card">
             <img src="assets/cta-bg.jpg" alt="" class="card-bg" loading="lazy">
             <div class="card-overlay"></div>
-            <div class="card-icon icon-orange"><i class="fa-solid fa-wrench"></i></div>
             <div class="card-content">
-                <p class="card-title">Manutenção<br>e Revisão</p>
-                <p class="card-sub">Agende seu horário</p>
-                <span class="card-pill"><i class="fa-solid fa-arrow-right" style="font-size:9px"></i> Agendar</span>
+                <div class="card-icon icon-orange"><i class="fa-solid fa-wrench"></i></div>
+                <div class="card-text">
+                    <p class="card-title">Manutenção e Revisão</p>
+                    <p class="card-sub">Agende seu horário</p>
+                </div>
+                <div class="card-arrow"><i class="fa-solid fa-arrow-right"></i></div>
             </div>
         </a>
 
@@ -249,11 +267,13 @@
            target="_blank" rel="noopener" class="card">
             <img src="assets/gal-1715.jpg" alt="" class="card-bg" loading="lazy">
             <div class="card-overlay"></div>
-            <div class="card-icon icon-orange"><i class="fa-solid fa-droplet"></i></div>
             <div class="card-content">
-                <p class="card-title">Lavagem<br>Detalhada</p>
-                <p class="card-sub">Sua bike impecável</p>
-                <span class="card-pill"><i class="fa-solid fa-arrow-right" style="font-size:9px"></i> Agendar</span>
+                <div class="card-icon icon-orange"><i class="fa-solid fa-droplet"></i></div>
+                <div class="card-text">
+                    <p class="card-title">Lavagem Detalhada</p>
+                    <p class="card-sub">Sua bike impecável</p>
+                </div>
+                <div class="card-arrow"><i class="fa-solid fa-arrow-right"></i></div>
             </div>
         </a>
 
@@ -262,11 +282,13 @@
            target="_blank" rel="noopener" class="card">
             <img src="assets/gal-1371.jpg" alt="" class="card-bg" loading="lazy">
             <div class="card-overlay"></div>
-            <div class="card-icon icon-orange"><i class="fa-solid fa-box-open"></i></div>
             <div class="card-content">
-                <p class="card-title">Peças e<br>Acessórios</p>
-                <p class="card-sub">Consulte disponibilidade</p>
-                <span class="card-pill"><i class="fa-solid fa-arrow-right" style="font-size:9px"></i> Consultar</span>
+                <div class="card-icon icon-orange"><i class="fa-solid fa-box-open"></i></div>
+                <div class="card-text">
+                    <p class="card-title">Peças e Acessórios</p>
+                    <p class="card-sub">Consulte disponibilidade</p>
+                </div>
+                <div class="card-arrow"><i class="fa-solid fa-arrow-right"></i></div>
             </div>
         </a>
 
@@ -274,11 +296,13 @@
         <a href="index.html" class="card">
             <img src="assets/hero-1708.jpg" alt="" class="card-bg" loading="lazy">
             <div class="card-overlay"></div>
-            <div class="card-icon icon-dark"><i class="fa-solid fa-globe"></i></div>
             <div class="card-content">
-                <p class="card-title">Acesse<br>nosso Site</p>
-                <p class="card-sub">Conheça a Leo Bikes</p>
-                <span class="card-pill"><i class="fa-solid fa-arrow-right" style="font-size:9px"></i> Ver site</span>
+                <div class="card-icon icon-dark"><i class="fa-solid fa-globe"></i></div>
+                <div class="card-text">
+                    <p class="card-title">Acesse nosso Site</p>
+                    <p class="card-sub">Conheça a Leo Bikes</p>
+                </div>
+                <div class="card-arrow"><i class="fa-solid fa-arrow-right"></i></div>
             </div>
         </a>
 
@@ -298,7 +322,7 @@
            class="social-btn" aria-label="Instagram Leo Bikes">
             <i class="fa-brands fa-instagram"></i>
         </a>
-        <a href="https://wa.me/5551999857570" target="_blank" rel="noopener"
+        <a href="https://wa.me/5551999857570?text=Ol%C3%A1%21%20Estava%20no%20site%20da%20Leo%20Bikes%20e%20gostaria%20de%20atendimento." target="_blank" rel="noopener"
            class="social-btn" aria-label="WhatsApp Leo Bikes">
             <i class="fa-brands fa-whatsapp"></i>
         </a>
@@ -307,5 +331,11 @@
     <p class="footer">© 2026 Leo Bikes</p>
 
 </div>
+
+<a href="https://wa.me/5551999857570?text=Ol%C3%A1%21%20Estava%20no%20site%20da%20Leo%20Bikes%20e%20gostaria%20de%20atendimento." target="_blank" rel="noopener"
+   class="wa-btn" aria-label="Falar no WhatsApp">
+    <i class="fa-brands fa-whatsapp"></i>
+</a>
+
 </body>
 </html>
