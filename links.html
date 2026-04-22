@@ -9,7 +9,7 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
     <style>
@@ -23,7 +23,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 40px 20px;
+            padding: 44px 20px;
         }
 
         .container {
@@ -32,88 +32,157 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 0;
         }
 
         /* Logo */
-        .logo {
-            width: 140px;
-            margin-bottom: 28px;
-        }
+        .logo { width: 130px; margin-bottom: 10px; }
 
         /* Tagline */
         .tagline {
-            font-size: 13px;
-            font-weight: 500;
-            color: rgba(255,255,255,0.45);
-            letter-spacing: 0.06em;
+            font-size: 12px;
+            font-weight: 600;
+            color: rgba(255,255,255,0.38);
+            letter-spacing: 0.1em;
             text-transform: uppercase;
             margin-bottom: 36px;
             text-align: center;
         }
 
-        /* Buttons */
+        /* Cards */
         .links {
             width: 100%;
             display: flex;
             flex-direction: column;
-            gap: 12px;
-            margin-bottom: 48px;
+            gap: 14px;
+            margin-bottom: 44px;
         }
 
-        .btn {
+        .card {
+            position: relative;
+            width: 100%;
+            height: 110px;
+            border-radius: 18px;
+            overflow: hidden;
+            text-decoration: none;
+            display: block;
+            -webkit-tap-highlight-color: transparent;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.45);
+        }
+        .card:hover  { transform: translateY(-3px); box-shadow: 0 8px 32px rgba(0,0,0,0.55); }
+        .card:active { transform: scale(0.98); }
+
+        /* Background photo */
+        .card-bg {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        /* Dark overlay — stronger on right where text lives */
+        .card-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                to right,
+                rgba(0,0,0,0.15) 0%,
+                rgba(0,0,0,0.60) 38%,
+                rgba(0,0,0,0.88) 100%
+            );
+        }
+        /* Extra tint for overall legibility */
+        .card-overlay::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(0,0,0,0.22);
+        }
+
+        /* Content */
+        .card-content {
+            position: relative;
+            z-index: 2;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            justify-content: center;
+            padding: 16px 20px 16px 40%;
+            gap: 6px;
+        }
+
+        .card-title {
+            font-size: 17px;
+            font-weight: 800;
+            color: #fff;
+            line-height: 1.2;
+            text-align: right;
+        }
+
+        .card-sub {
+            font-size: 11px;
+            font-weight: 500;
+            color: rgba(255,255,255,0.60);
+            text-align: right;
+            line-height: 1.4;
+        }
+
+        .card-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            margin-top: 2px;
+            background: rgba(255,255,255,0.12);
+            border: 1px solid rgba(255,255,255,0.22);
+            color: #fff;
+            font-size: 11px;
+            font-weight: 700;
+            padding: 5px 12px;
+            border-radius: 999px;
+            backdrop-filter: blur(4px);
+        }
+
+        /* Floating icon badge */
+        .card-icon {
+            position: absolute;
+            z-index: 3;
+            top: -8px;
+            right: -8px;
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
             display: flex;
             align-items: center;
-            justify-content: space-between;
-            width: 100%;
-            padding: 16px 22px;
-            border-radius: 14px;
-            font-size: 15px;
-            font-weight: 700;
-            text-decoration: none;
-            cursor: pointer;
-            border: none;
-            transition: transform 0.18s ease, background 0.18s ease;
-            -webkit-tap-highlight-color: transparent;
+            justify-content: center;
+            font-size: 20px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.5);
+            border: 2px solid rgba(255,255,255,0.15);
         }
-        .btn:active { transform: scale(0.97); }
 
-        .btn-primary {
-            background: #E8551C;
-            color: #fff;
-        }
-        .btn-primary:hover { background: #C44415; }
+        .icon-orange  { background: #E8551C; color: #fff; }
+        .icon-green   { background: #25D366; color: #fff; }
+        .icon-dark    { background: #1C1C1C; color: rgba(255,255,255,0.75); border-color: rgba(255,255,255,0.12); }
 
-        .btn-outline {
-            background: transparent;
-            color: #fff;
-            border: 1.5px solid rgba(255,255,255,0.18);
-        }
-        .btn-outline:hover { border-color: #E8551C; color: #E8551C; }
-
-        .btn-site {
-            background: #1C1C1C;
-            color: rgba(255,255,255,0.80);
-            border: 1.5px solid rgba(255,255,255,0.08);
-        }
-        .btn-site:hover { border-color: rgba(255,255,255,0.3); color: #fff; }
-
-        .btn-label { flex: 1; text-align: center; }
-        .btn-icon { font-size: 16px; width: 20px; text-align: right; opacity: 0.6; }
+        /* Pill accent color per card */
+        .card-primary .card-pill { background: rgba(232,85,28,0.25); border-color: rgba(232,85,28,0.5); }
 
         /* Divider */
         .divider {
-            width: 48px;
+            width: 40px;
             height: 1px;
-            background: rgba(255,255,255,0.12);
-            margin-bottom: 28px;
+            background: rgba(255,255,255,0.10);
+            margin-bottom: 24px;
         }
 
         /* Social row */
         .socials {
             display: flex;
-            gap: 16px;
+            gap: 14px;
             align-items: center;
+            margin-bottom: 36px;
         }
 
         .social-btn {
@@ -124,87 +193,119 @@
             height: 52px;
             border-radius: 14px;
             background: #1C1C1C;
-            color: rgba(255,255,255,0.65);
+            color: rgba(255,255,255,0.60);
             font-size: 20px;
             text-decoration: none;
             border: 1.5px solid rgba(255,255,255,0.08);
             transition: background 0.18s ease, color 0.18s ease, border-color 0.18s ease, transform 0.18s ease;
             -webkit-tap-highlight-color: transparent;
         }
-        .social-btn:active { transform: scale(0.94); }
-        .social-btn:hover { background: #E8551C; color: #fff; border-color: #E8551C; }
+        .social-btn:active { transform: scale(0.93); }
+        .social-btn:hover  { background: #E8551C; color: #fff; border-color: #E8551C; }
 
-        /* Footer */
         .footer {
-            margin-top: 40px;
             font-size: 11px;
-            color: rgba(255,255,255,0.18);
+            color: rgba(255,255,255,0.15);
             letter-spacing: 0.04em;
         }
     </style>
 </head>
 <body>
-    <div class="container">
+<div class="container">
 
-        <img src="Logotipo/Logotipo%20Leo%20Bikes-01.png" alt="Leo Bikes" class="logo">
+    <img src="Logotipo/Logotipo%20Leo%20Bikes-01.png" alt="Leo Bikes" class="logo">
+    <p class="tagline">Oficina &amp; Loja de Bicicletas · Campo Bom, RS</p>
 
-        <p class="tagline">Oficina &amp; Loja de Bicicletas · Campo Bom, RS</p>
+    <div class="links">
 
-        <div class="links">
+        <!-- Consultoria de Compra -->
+        <a href="https://wa.me/5551999857570?text=Ol%C3%A1%20Leo%2C%20quero%20consultoria%20para%20comprar%20uma%20bike!"
+           target="_blank" rel="noopener" class="card card-primary">
+            <img src="assets/gal-2757.jpg" alt="" class="card-bg" loading="eager">
+            <div class="card-overlay"></div>
+            <div class="card-icon icon-green"><i class="fa-brands fa-whatsapp"></i></div>
+            <div class="card-content">
+                <p class="card-title">Consultoria<br>de Compra</p>
+                <p class="card-sub">Fale direto com o Leo</p>
+                <span class="card-pill"><i class="fa-solid fa-arrow-right" style="font-size:9px"></i> Falar agora</span>
+            </div>
+        </a>
 
-            <a href="https://wa.me/5551999857570?text=Ol%C3%A1%20Leo%2C%20quero%20consultoria%20para%20comprar%20uma%20bike!"
-               target="_blank" rel="noopener" class="btn btn-primary">
-                <span class="btn-label">Consultoria de Compra</span>
-                <i class="fa-brands fa-whatsapp btn-icon" style="opacity:1"></i>
-            </a>
+        <!-- Manutenção e Revisão -->
+        <a href="https://wa.me/5551999857570?text=Ol%C3%A1%20Leo%2C%20quero%20agendar%20uma%20revis%C3%A3o!"
+           target="_blank" rel="noopener" class="card">
+            <img src="assets/cta-bg.jpg" alt="" class="card-bg" loading="lazy">
+            <div class="card-overlay"></div>
+            <div class="card-icon icon-orange"><i class="fa-solid fa-wrench"></i></div>
+            <div class="card-content">
+                <p class="card-title">Manutenção<br>e Revisão</p>
+                <p class="card-sub">Agende seu horário</p>
+                <span class="card-pill"><i class="fa-solid fa-arrow-right" style="font-size:9px"></i> Agendar</span>
+            </div>
+        </a>
 
-            <a href="https://wa.me/5551999857570?text=Ol%C3%A1%20Leo%2C%20quero%20agendar%20uma%20revis%C3%A3o!"
-               target="_blank" rel="noopener" class="btn btn-outline">
-                <span class="btn-label">Manutenção e Revisão</span>
-                <i class="fa-solid fa-arrow-right btn-icon"></i>
-            </a>
+        <!-- Lavagem Detalhada -->
+        <a href="https://wa.me/5551999857570?text=Ol%C3%A1%20Leo%2C%20quero%20agendar%20uma%20lavagem!"
+           target="_blank" rel="noopener" class="card">
+            <img src="assets/gal-1715.jpg" alt="" class="card-bg" loading="lazy">
+            <div class="card-overlay"></div>
+            <div class="card-icon icon-orange"><i class="fa-solid fa-droplet"></i></div>
+            <div class="card-content">
+                <p class="card-title">Lavagem<br>Detalhada</p>
+                <p class="card-sub">Sua bike impecável</p>
+                <span class="card-pill"><i class="fa-solid fa-arrow-right" style="font-size:9px"></i> Agendar</span>
+            </div>
+        </a>
 
-            <a href="https://wa.me/5551999857570?text=Ol%C3%A1%20Leo%2C%20quero%20agendar%20uma%20lavagem!"
-               target="_blank" rel="noopener" class="btn btn-outline">
-                <span class="btn-label">Lavagem Detalhada</span>
-                <i class="fa-solid fa-arrow-right btn-icon"></i>
-            </a>
+        <!-- Peças e Acessórios -->
+        <a href="https://wa.me/5551999857570?text=Ol%C3%A1%20Leo%2C%20quero%20saber%20sobre%20pe%C3%A7as%20e%20acess%C3%B3rios!"
+           target="_blank" rel="noopener" class="card">
+            <img src="assets/gal-1371.jpg" alt="" class="card-bg" loading="lazy">
+            <div class="card-overlay"></div>
+            <div class="card-icon icon-orange"><i class="fa-solid fa-box-open"></i></div>
+            <div class="card-content">
+                <p class="card-title">Peças e<br>Acessórios</p>
+                <p class="card-sub">Consulte disponibilidade</p>
+                <span class="card-pill"><i class="fa-solid fa-arrow-right" style="font-size:9px"></i> Consultar</span>
+            </div>
+        </a>
 
-            <a href="https://wa.me/5551999857570?text=Ol%C3%A1%20Leo%2C%20quero%20saber%20sobre%20pe%C3%A7as%20e%20acess%C3%B3rios!"
-               target="_blank" rel="noopener" class="btn btn-outline">
-                <span class="btn-label">Peças e Acessórios</span>
-                <i class="fa-solid fa-arrow-right btn-icon"></i>
-            </a>
-
-            <a href="index.html" class="btn btn-site">
-                <span class="btn-label">Acesse nosso Site</span>
-                <i class="fa-solid fa-globe btn-icon"></i>
-            </a>
-
-        </div>
-
-        <div class="divider"></div>
-
-        <div class="socials">
-            <a href="https://share.google/0KsvZn6BKRgSCGDD6" target="_blank" rel="noopener"
-               class="social-btn" aria-label="Localização Leo Bikes">
-                <i class="fa-solid fa-location-dot"></i>
-            </a>
-            <a href="tel:+5551999857570" class="social-btn" aria-label="Ligar para Leo Bikes">
-                <i class="fa-solid fa-phone"></i>
-            </a>
-            <a href="https://www.instagram.com/leo_bikeshop/" target="_blank" rel="noopener"
-               class="social-btn" aria-label="Instagram Leo Bikes">
-                <i class="fa-brands fa-instagram"></i>
-            </a>
-            <a href="https://wa.me/5551999857570" target="_blank" rel="noopener"
-               class="social-btn" aria-label="WhatsApp Leo Bikes">
-                <i class="fa-brands fa-whatsapp"></i>
-            </a>
-        </div>
-
-        <p class="footer">© 2026 Leo Bikes</p>
+        <!-- Acesse o Site -->
+        <a href="index.html" class="card">
+            <img src="assets/hero-1708.jpg" alt="" class="card-bg" loading="lazy">
+            <div class="card-overlay"></div>
+            <div class="card-icon icon-dark"><i class="fa-solid fa-globe"></i></div>
+            <div class="card-content">
+                <p class="card-title">Acesse<br>nosso Site</p>
+                <p class="card-sub">Conheça a Leo Bikes</p>
+                <span class="card-pill"><i class="fa-solid fa-arrow-right" style="font-size:9px"></i> Ver site</span>
+            </div>
+        </a>
 
     </div>
+
+    <div class="divider"></div>
+
+    <div class="socials">
+        <a href="https://share.google/0KsvZn6BKRgSCGDD6" target="_blank" rel="noopener"
+           class="social-btn" aria-label="Localização Leo Bikes">
+            <i class="fa-solid fa-location-dot"></i>
+        </a>
+        <a href="tel:+5551999857570" class="social-btn" aria-label="Ligar para Leo Bikes">
+            <i class="fa-solid fa-phone"></i>
+        </a>
+        <a href="https://www.instagram.com/leo_bikeshop/" target="_blank" rel="noopener"
+           class="social-btn" aria-label="Instagram Leo Bikes">
+            <i class="fa-brands fa-instagram"></i>
+        </a>
+        <a href="https://wa.me/5551999857570" target="_blank" rel="noopener"
+           class="social-btn" aria-label="WhatsApp Leo Bikes">
+            <i class="fa-brands fa-whatsapp"></i>
+        </a>
+    </div>
+
+    <p class="footer">© 2026 Leo Bikes</p>
+
+</div>
 </body>
 </html>
