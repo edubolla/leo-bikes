@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leo Bikes | Links</title>
+    <meta name="description" content="Leo Bikes — Oficina especializada em MTB e Speed. Campo Bom, RS.">
+    <meta name="robots" content="noindex">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            background: #0D0D0D;
+            color: #fff;
+            font-family: 'Inter', sans-serif;
+            min-height: 100svh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 420px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0;
+        }
+
+        /* Logo */
+        .logo {
+            width: 140px;
+            margin-bottom: 28px;
+        }
+
+        /* Tagline */
+        .tagline {
+            font-size: 13px;
+            font-weight: 500;
+            color: rgba(255,255,255,0.45);
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            margin-bottom: 36px;
+            text-align: center;
+        }
+
+        /* Buttons */
+        .links {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 48px;
+        }
+
+        .btn {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            padding: 16px 22px;
+            border-radius: 14px;
+            font-size: 15px;
+            font-weight: 700;
+            text-decoration: none;
+            cursor: pointer;
+            border: none;
+            transition: transform 0.18s ease, background 0.18s ease;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .btn:active { transform: scale(0.97); }
+
+        .btn-primary {
+            background: #E8551C;
+            color: #fff;
+        }
+        .btn-primary:hover { background: #C44415; }
+
+        .btn-outline {
+            background: transparent;
+            color: #fff;
+            border: 1.5px solid rgba(255,255,255,0.18);
+        }
+        .btn-outline:hover { border-color: #E8551C; color: #E8551C; }
+
+        .btn-site {
+            background: #1C1C1C;
+            color: rgba(255,255,255,0.80);
+            border: 1.5px solid rgba(255,255,255,0.08);
+        }
+        .btn-site:hover { border-color: rgba(255,255,255,0.3); color: #fff; }
+
+        .btn-label { flex: 1; text-align: center; }
+        .btn-icon { font-size: 16px; width: 20px; text-align: right; opacity: 0.6; }
+
+        /* Divider */
+        .divider {
+            width: 48px;
+            height: 1px;
+            background: rgba(255,255,255,0.12);
+            margin-bottom: 28px;
+        }
+
+        /* Social row */
+        .socials {
+            display: flex;
+            gap: 16px;
+            align-items: center;
+        }
+
+        .social-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 52px;
+            height: 52px;
+            border-radius: 14px;
+            background: #1C1C1C;
+            color: rgba(255,255,255,0.65);
+            font-size: 20px;
+            text-decoration: none;
+            border: 1.5px solid rgba(255,255,255,0.08);
+            transition: background 0.18s ease, color 0.18s ease, border-color 0.18s ease, transform 0.18s ease;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .social-btn:active { transform: scale(0.94); }
+        .social-btn:hover { background: #E8551C; color: #fff; border-color: #E8551C; }
+
+        /* Footer */
+        .footer {
+            margin-top: 40px;
+            font-size: 11px;
+            color: rgba(255,255,255,0.18);
+            letter-spacing: 0.04em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <img src="Logotipo/Logotipo%20Leo%20Bikes-01.png" alt="Leo Bikes" class="logo">
+
+        <p class="tagline">Oficina &amp; Loja · Campo Bom, RS</p>
+
+        <div class="links">
+
+            <a href="https://wa.me/5551999857570?text=Ol%C3%A1%20Leo%2C%20quero%20consultoria%20para%20comprar%20uma%20bike!"
+               target="_blank" rel="noopener" class="btn btn-primary">
+                <span class="btn-label">Consultoria de Compra</span>
+                <i class="fa-brands fa-whatsapp btn-icon" style="opacity:1"></i>
+            </a>
+
+            <a href="https://wa.me/5551999857570?text=Ol%C3%A1%20Leo%2C%20quero%20agendar%20uma%20revis%C3%A3o!"
+               target="_blank" rel="noopener" class="btn btn-outline">
+                <span class="btn-label">Manutenção e Revisão</span>
+                <i class="fa-solid fa-arrow-right btn-icon"></i>
+            </a>
+
+            <a href="https://wa.me/5551999857570?text=Ol%C3%A1%20Leo%2C%20quero%20agendar%20uma%20lavagem!"
+               target="_blank" rel="noopener" class="btn btn-outline">
+                <span class="btn-label">Lavagem Detalhada</span>
+                <i class="fa-solid fa-arrow-right btn-icon"></i>
+            </a>
+
+            <a href="https://wa.me/5551999857570?text=Ol%C3%A1%20Leo%2C%20quero%20saber%20sobre%20pe%C3%A7as%20e%20acess%C3%B3rios!"
+               target="_blank" rel="noopener" class="btn btn-outline">
+                <span class="btn-label">Peças e Acessórios</span>
+                <i class="fa-solid fa-arrow-right btn-icon"></i>
+            </a>
+
+            <a href="index.html" class="btn btn-site">
+                <span class="btn-label">Acesse nosso Site</span>
+                <i class="fa-solid fa-globe btn-icon"></i>
+            </a>
+
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="socials">
+            <a href="tel:+5551999857570" class="social-btn" aria-label="Ligar para Leo Bikes">
+                <i class="fa-solid fa-phone"></i>
+            </a>
+            <a href="https://www.instagram.com/leo_bikeshop/" target="_blank" rel="noopener"
+               class="social-btn" aria-label="Instagram Leo Bikes">
+                <i class="fa-brands fa-instagram"></i>
+            </a>
+            <a href="https://wa.me/5551999857570" target="_blank" rel="noopener"
+               class="social-btn" aria-label="WhatsApp Leo Bikes">
+                <i class="fa-brands fa-whatsapp"></i>
+            </a>
+        </div>
+
+        <p class="footer">© 2026 Leo Bikes</p>
+
+    </div>
+</body>
+</html>
